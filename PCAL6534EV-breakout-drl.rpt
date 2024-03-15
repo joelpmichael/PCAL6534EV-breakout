@@ -1,5 +1,5 @@
 Drill report for PCAL6534EV-breakout.kicad_pcb
-Created on 2024-03-15T11:04:40+1100
+Created on 2024-03-15T22:26:05+1100
 
 Copper Layer Stackup:
     =============================================================
@@ -24,5 +24,6 @@ Drill file 'PCAL6534EV-breakout-PTH.drl' contains
 Drill file 'PCAL6534EV-breakout-NPTH.drl' contains
     unplated through holes:
     =============================================================
+    T1  1.000mm  0.0394"  (1 hole)
 
-    Total unplated holes count 0
+    Total unplated holes count 1

@@ -1,5 +1,9 @@
 Ref,Val,Package,PosX,PosY,Rot,Side
 "C1","0.22u","C_0402_1005Metric",156.143000,-106.797000,90.000000,top
+"FID1","Fiducial_0.5mm_Mask1mm","Fiducial_0.5mm_Mask1mm",152.206000,-110.480000,0.000000,top
+"FID2","Fiducial_0.5mm_Mask1mm","Fiducial_0.5mm_Mask1mm",155.000000,-112.766000,0.000000,top
+"FID3","Fiducial_1mm_Mask2mm","Fiducial_1mm_Mask2mm",155.000000,-103.876000,0.000000,top
+"FID4","Fiducial_1mm_Mask2mm","Fiducial_1mm_Mask2mm",158.175000,-108.829000,0.000000,top
 "J1","SM04B-SRSS-TB","JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",155.000000,-88.128000,180.000000,top
 "R1","4.7k","R_0402_1005Metric",153.095000,-106.035000,0.000000,top
 "R2","4.7k","R_0402_1005Metric",153.095000,-107.305000,0.000000,top
