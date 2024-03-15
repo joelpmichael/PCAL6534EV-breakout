@@ -3909,7 +3909,7 @@
 		)
 		(uuid "8e69f395-f07c-4956-890b-a59fe8eafb87")
 	)
-	(text_box "JP2-JP3: I2C Device Address Selection\n\nBase address: 0b01000XY\n\nJP2 1-2: X = 0, Y = 0\nJP2 2-3: X = 0, Y = 1\nJP3 1-2: X = 1, Y = 0\nJP3 2-3: X = 1, Y = 1"
+	(text_box "JP2-JP3: I2C Device Address Selection\n\nBase address: 0b01000XY (0x20)\n\nJP2 1-2: X = 0, Y = 0 (0x20)\nJP2 2-3: X = 0, Y = 1 (0x21)\nJP3 1-2: X = 1, Y = 0 (0x22)\nJP3 2-3: X = 1, Y = 1 (0x23)"
 		(exclude_from_sim no)
 		(at 27.94 62.23 0)
 		(size 40.64 17.78)
