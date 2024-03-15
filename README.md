@@ -15,7 +15,7 @@
 
 ![3D rendering of PCAL6534EV breakout board front side](PCAL6534EV-breakout-render-front.png)![3D rendering of PCAL6534EV breakout board back side](PCAL6534EV-breakout-render-back.png)
 
-This is a breakout board for the [NXP PCAL6534EV I2C GPIO expander](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534). The board breaks out 32 out of the possible 34 GPIO pins, with 26 of the 32 GPIO pins arranged in a DIP-style layout at 12.7mm column spacing which is perfect for breadboard or protoboard use. There is also a [SparkFun QWIIC-compatible connector](https://www.sparkfun.com/qwiic), for easy connection to other QWIIC-compatible boards. Unfortunately, there just isn't enough room for any mounting holes but attaching to breadboard or protoboard provides an alternative strong and secure mounting option.
+This is a breakout board for the [NXP PCAL6534EV I2C GPIO expander](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/general-purpose-i-o-gpio/ultra-low-voltage-level-translating-34-bit-ic-bus-smbus-i-o-expander:PCAL6534). The board breaks out 32 out of the possible 34 GPIO pins, with 26 of the 32 GPIO pins arranged in a DIP-style layout at 12.7mm column spacing which is perfect for breadboard or protoboard use. There is also a [SparkFun QWIIC-compatible connector](https://www.sparkfun.com/qwiic), for easy connection to other QWIIC-compatible boards.
 
 ## Why?
 
@@ -32,14 +32,17 @@ Please refer to the [PCAL6534EV Datasheet](https://www.nxp.com/docs/en/data-shee
 - [I2C communication](#i2c-communication)
 - [Interrupt and reset](#interrupt-and-reset)
 - [GPIO use](#gpio-use)
+- [Mounting](#mounting)
 
 ### Connecting
 
 Solder the 20-pin headers into each side and slam it into a breadboard! The width is minimised to allow access to 3 pins on each side - wider breakout and prototype boards have always annoyed me by only allowing access to 1 or 2 pins on each side.
 
-Use the QWIIC-compatible connector J1 to connect to your MCU, as the PCAL6534EV is optimised to run at 3.3V. You may run into current supply limits when using the very thin 28AWG in QWIIC-compatible cables, as the PCAL6534EV can source up to 400mA or sink up to 500mA of current to GPIO pins. If you're driving a lot of LEDs or something, hook up an additional 3.3V power connection to the pin header.
+Use the QWIIC-compatible connector J1 to connect to your MCU, as the PCAL6534EV is optimised to run at 3.3V. You may run into current supply limits when using the very thin 28AWG wire in QWIIC-compatible cables, as the PCAL6534EV can source up to 450mA or sink up to 500mA of current. If you're driving a lot of LEDs or something, hook up an additional 3.3V power connection to the pin header, and maybe a chonky electrolytic capacitor across 3V3 or VIO.
 
 You can also solder wires directly to the pin headers if needed, or solder the pin headers to a protoboard, or just do what you want I'm not your mum.
+
+At the very bottom edge of the breakout board is an exposed ground plane, designed for you to attach an alligator clip while probing with a multimeter, osciloscope, or logic analyzer.
 
 ### Powering
 
@@ -58,7 +61,7 @@ The PCAL6534EV I2C device address is set by connecting the ADDR line to either S
 |JP3|1-2|0x22|
 |JP3|2-3|0x23|
 
-> ⚠️ SDA and SCL pins are **NOT** 5V-tolerant!
+> ⚠️ SDA and SCL pins **ARE NOT** 5V-tolerant!
 
 ### Interrupt and reset
 
@@ -66,7 +69,7 @@ The PCAL6534EV contains both an Interrupt (IRQ) line, and a Reset (RST) line. Bo
 
 The Reset input line is an active-low input, and the breakout board contains a a 10kΩ pull-up resistor to VDD(i2c) because most likely you'll be supplying the Reset signal from the same MCU that the I2C controller is running on, or you've wired the Reset line to an external momentary switch and you don't care about the voltage. If you're using a momentary switch, add a 0.1µF capacitor in parallel to the switch for a hardware debouncer and noise filter. It is safe to leave the Reset line disconnected from the breakout board.
 
-> ⚠️ Interrupt and Reset pins are **NOT** 5V-tolerant!
+> ⚠️ Interrupt and Reset pins **ARE NOT** 5V-tolerant!
 
 ### GPIO use
 
@@ -76,13 +79,19 @@ For advanced use-cases, such as enabling internal 100kΩ pull-up or pull-down re
 
 > ✔️ GPIO pins **ARE** 5V-tolerant!
 
+### Mounting
+
+Due to asthetics and space constraints there isn't enough room for a full-size mounting hole, however in the middle of the OSHW logo there is a 1mm pilot hole that you can use to drill a mounting hole. Ideal? No. Pragmatic? Yes. 
+
+Personally I wouldn't drill a hole larger than 3mm, which will allow you to use a M3 fastener, but you should be able drill up to a 5mm hole without hitting traces. If using metal fasteners, use nylon washers to avoid damage to traces by screw heads.
+
 ## Can I buy one?
 
 Sure! Once I've got enough requests for a small batch run I'll send off an order. I test every single board to make sure it's fully functional before shipping.
 
 ## Can I make one?
 
-Sure, why not? The board is designed to be manufactured using JLCPCB's 6-layer fabrication constraints as at March 2024 by using budget-size 50mm maximum dimension, standard 0.3mm drill size, 0.8mm thickness, 1oz outer copper, 0.5oz inner copper, and the JLC06081H-1080A stackup. It currently does not meet OSHPARK fabrication constraints, as the trace and space minimum of 0.09mm is smaller than the required 0.1mm and there is some via-in-pad use.
+Sure, why not? The board is designed to be manufactured using JLCPCB's 6-layer fabrication constraints as at March 2024 by using budget-size 50mm maximum dimension, budget 0.3mm drill size, 0.8mm thickness, 1oz outer copper, 0.5oz inner copper, and the budget (but surprisingly good) JLC06081H-1080A stackup. It currently does not meet OSHPARK fabrication constraints, as the trace and space minimum of 0.09mm is smaller than the required 0.1mm and there is some via-in-pad use which is currently unsupported.
 
 ## Can I make heaps and sell them?
 
