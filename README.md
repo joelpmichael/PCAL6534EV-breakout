@@ -65,7 +65,7 @@ The PCAL6534EV I2C device address is set by connecting the ADDR line to either S
 
 ### Interrupt and reset
 
-The PCAL6534EV contains both an Interrupt (IRQ) line, and a Reset (RST) line. Both lines are active-low. The IRQ output line uses an open-drain driver, and the breakout board contains a 10kΩ pull-up resistor to VDD(i2c) because most likely you'll be using the IRQ signal on the same MCU that the I2C controller is running on. If you really really really REALLY need to change this, you can remove R4 and connect another pull-up resistor between the R4 pad 1 (closest to JP4) and VIO.
+The PCAL6534EV contains both an Interrupt (IRQ) line, and a Reset (RST) line. Both lines are active-low. The IRQ output line uses an open-drain driver, and the breakout board contains a 10kΩ pull-up resistor to VDD(i2c) because most likely you'll be using the IRQ signal on the same MCU that the I2C controller is running on. If you really really really REALLY need to change this, you can remove R4 and connect another pull-up resistor between R4 pad 1 (closest to JP4) and VIO, ensuring that VIO is limited to 3.3V.
 
 The Reset input line is an active-low input, and the breakout board contains a a 10kΩ pull-up resistor to VDD(i2c) because most likely you'll be supplying the Reset signal from the same MCU that the I2C controller is running on, or you've wired the Reset line to an external momentary switch and you don't care about the voltage. If you're using a momentary switch, add a 0.1µF capacitor in parallel to the switch for a hardware debouncer and noise filter. It is safe to leave the Reset line disconnected from the breakout board.
 
@@ -75,7 +75,7 @@ The Reset input line is an active-low input, and the breakout board contains a a
 
 It's a... uh... low-speed GPIO? Just use them, the default PCAL6534EV configuration should work for most cases! All the GPIO pins are 5V-tolerant, and will even produce 5V output if you're using 5V on VIO, so feel free to hook them up to your old MEGA328P-based Arduinos and do voltage level translation. You can even drive a LOT of LEDs directly from the GPIO pins - every pin is recommended to source 10mA or sink 25mA of current, with a combined total of 450mA of sourcing current and 500mA of sinking current.
 
-For advanced use-cases, such as enabling internal 100kΩ pull-up or pull-down resistors, switching between push-pull or open-drain output mode, enabling interrupt generation, enabling debouncing filters, or reducing the drive strength to limit GPIO switching noise, please refer to the datasheet.
+For advanced use-cases, such as enabling internal 100kΩ pull-up or pull-down resistors, switching between push-pull or open-drain output mode, enabling interrupt generation, enabling debouncing filters, or reducing the drive strength to limit GPIO switching noise, please refer to the datasheet and the example source code.
 
 > ✔️ GPIO pins **ARE** 5V-tolerant!
 
